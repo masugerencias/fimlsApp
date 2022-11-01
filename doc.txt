@@ -43,16 +43,16 @@ Básicamente, lo que body-parser es lo que permite
         dialect:'mysql'
  })
 
-
- 2.3 
+CREAR MODELO  CREAR MODELO SEQUELIZE CREAR MODELO SEQUELIZE CREAR MODELO SEQUELIZE
+ 3.1 
  Para levantar la BBDD necesito modelos.
  Creando una carpeta MODELS y dentro para cada tabla un archivo js.
  Archivo js llamado films en plural donde voy a almacenar mis pelis.
 
 
- 2.4
+3.2
  Lo primero es EXPORTAR una funcion quie reutilizare para los modelos de sequelize.
- Exporto la propia instancia de sequelize (pero en minusculas), y tambien type => para saber que tipo de datos va a tener cada campo.
+ Exporto la propia instancia de sequelize (pero en minusculas), y tambien type y se cierra parentesis y funcion flecha => para saber que tipo de datos va a tener cada campo.
 
  Ponemos un return con: sequelize.define()
  Dentro del define ponemos ponemos el nombre de la primera tabla que vamos a generar EN SINGULAR.
@@ -72,3 +72,33 @@ Básicamente, lo que body-parser es lo que permite
 
  UNa vez el modelo definido el modelo de la tabla, ahora me lo tengo que lelvar a mi fichero de base de datos 
  Para cargarlo y que genere la tabla para yo no tener que entrar ni siquiera en la DDBB.
+
+
+4444444444444444444444444444444
+En el archivo db.js tngo que traer el modelo creado:
+Creando una cosntante requiriendoola con la ruta.
+Y lanzar la funcion, igualandola a una cosntante el modelo de la tabla y pasandole un par de parametros:
+const Film = FilmModel(sequelize, Sequelize)
+
+El primer sequelize es la constante del objeto de la base de datos con su contraseña, etc...
+Y el segundo es Sequelize den mayusc de la libreria de sequilize instalada.
+
+Creo que siempre que es en mayuscula es de la libreria npm.
+Hasta aqui ya tengo mi modelo Film (que se requiere del archivo de la caprtea de modelos) el cual puedo sincronizar con mi BBDD. 
+Porque aun no se ha generado el modelo en Workbench.
+
+sequelize.sync({ force: false})
+.then( () => {
+    console.log('ya se ha sincronizado la tabla en tu BBDD)
+})
+
+
+exportar para utilizar fuera losobjetos que neceite, aqui solo es Film.
+Esta sintaxis aprenderla joder, require y module.exports
+
+module.exports = {
+    Film
+}
+
+Esto lo requiero en mi index por arriba:
+require('./ruta de la bd.js)

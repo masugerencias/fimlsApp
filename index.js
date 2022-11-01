@@ -7,6 +7,10 @@ La inicializamos const app... */
 const express = require ('express');
 const app = express();
 
+/* REquiero mi tabla de base de datos */
+
+require('./db')
+
 /* BODY PARSER */
 const bodyParser = require ('body-parser')
 app.use(bodyParser.json())
