@@ -1,0 +1,74 @@
+1111111111111111111111111111
+ Lo primero de todo es requerir express
+La inicializamos const app...
+
+
+
+22222222222222222222222222222222
+Levantamos el servidor en el port 3000, con una 
+funcion anonima: app.listen
+
+3333333333333333333333333333333333
+Ya podemos provbar nuestra primera ruta */
+
+
+444444444444444444444444444444
+ Ya volvemos a bodyparser , 
+Básicamente, lo que body-parser es lo que permite
+ a Express leer el cuerpo y luego analizarlo en un 
+ objeto Json que podamos entender.*/
+ /* Despues de requerir body parser hay que hacer algunas configuariocnes:
+ lanzar un middleware con la funcion json:
+ app.use(bodyParser.json()) 
+
+ Tambien hay que poner con eso la codifuicacion de URL:
+ app.use(bodyParser.urlencoded({ extended: true }))
+
+ YA ESTA!
+ ***************************************************************
+
+
+ BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD BBDD 
+
+ 1
+ create database films 
+
+ 2
+ crear un JS de DB
+ 
+ 2.1 requiero a sequelize
+ 2.2 Creo un (instancia) new Sequelize('nombreBBDD', 'usario', 'contrasena', {
+        (objeto con varias cosas)
+        host:'localhost',
+        dialect:'mysql'
+ })
+
+
+ 2.3 
+ Para levantar la BBDD necesito modelos.
+ Creando una carpeta MODELS y dentro para cada tabla un archivo js.
+ Archivo js llamado films en plural donde voy a almacenar mis pelis.
+
+
+ 2.4
+ Lo primero es EXPORTAR una funcion quie reutilizare para los modelos de sequelize.
+ Exporto la propia instancia de sequelize (pero en minusculas), y tambien type => para saber que tipo de datos va a tener cada campo.
+
+ Ponemos un return con: sequelize.define()
+ Dentro del define ponemos ponemos el nombre de la primera tabla que vamos a generar EN SINGULAR.
+ (porque aun no hay ninguna definida.)
+ Y luego un objeto con los camps que vamos a generar: 
+ , {
+    id: {
+            type: type.INTEGER,
+            primaryKey: true,
+            autoIncrement:true
+    },
+    title:type.SRING,
+    description: type.STRING
+    }
+ }
+ Asi sucesivamente.
+
+ UNa vez el modelo definido el modelo de la tabla, ahora me lo tengo que lelvar a mi fichero de base de datos 
+ Para cargarlo y que genere la tabla para yo no tener que entrar ni siquiera en la DDBB.
