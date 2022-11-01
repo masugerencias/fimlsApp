@@ -11,6 +11,11 @@ const app = express();
 
 require('./db')
 
+/* requerir el manejador de rutas API de su carpeta routes, 
+Para que cuando venga una ruta /api + lo que sea, sepa a donde madnarla. */
+
+const apiRouter = require('./routes/api')
+
 /* BODY PARSER */
 const bodyParser = require ('body-parser')
 app.use(bodyParser.json())
@@ -33,6 +38,10 @@ app.get('/', (req, res) => {
 
     res.send ('primera ruta get')
 });
+
+
+app.use('/api',apiRouter);
+/* apiRouter en este caso es el archivo api.js */
 
 /* 
 444444444444444444444444444444444

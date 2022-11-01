@@ -1,5 +1,5 @@
 1111111111111111111111111111
- Lo primero de todo es requerir express
+Lo primero de todo es requerir express
 La inicializamos const app...
 
 
@@ -93,7 +93,7 @@ sequelize.sync({ force: false})
 })
 
 
-exportar para utilizar fuera losobjetos que neceite, aqui solo es Film.
+exportar para utilizar fuera los objetos que neceite, aqui solo es Film.
 Esta sintaxis aprenderla joder, require y module.exports
 
 module.exports = {
@@ -102,3 +102,56 @@ module.exports = {
 
 Esto lo requiero en mi index por arriba:
 require('./ruta de la bd.js)
+
+Ya puedo probar en workbench la tabla e instertar datos y todo.
+
+
+
+
+
+
+YA ESTÁ
+
+
+AHORA RUTAS PARA ACCEDER A LOS DINSTNTOS datos
+/api/films -> get que nos recupera todas las piliculas
+/api/films -> POST   crea
+PUT
+DELETE
+
+CRUD ENTERO
+
+
+api/users/login
+
+
+Creamos una cartpeta routes, archivo rout, 
+En este archivo queremos hacer el crud para que nos devuelva datos en JSON.
+
+
+
+
+
+MANEJADOR DE RUTAS
+1- Requerir express junto con un metodo Router();
+    const router = require('express').Router();
+    Y exportar a su vez eso tambien: module.exports = router;
+Y ya está configurado, ahora hay que ir a INDEX.JS para hacer el enroutamiento:
+
+
+importar el archivo de rout igualandolo a una cosntante. Creo que siempre se importa igualandolo a una constante.
+
+Ya está, ahora en el fichero prinipal, index.js. 
+Es donde me van a venir las peticiones, y tngo que poner que vayan a otro lado, 
+a sus respectivos manejadores. 
+
+app.use('/api',apiRouter);
+
+Aqui estoy diciendo que todas las peticiones con /api me lo va a gestional el fichero
+llamado apiRouter (llamado asi en este index.js, porque en routes se llama solo api.)
+Asi que las peticiones api irán a la capeta routs y al doc api.
+Reformulo : el archivo API en routes es porque ese archivo va a renderizar
+todas las rutas que tengan que ver con la API, podria hacer otro archivo de vistas 
+para que hiciera lo mismo pero solo con las vistas. 
+
+
